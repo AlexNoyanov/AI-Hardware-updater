@@ -42,4 +42,59 @@ A Python-based tool that uses AI to generate Arduino sketches for ESP32 and uplo
 ```bash
 git clone <repository-url>
 cd esp32-ai-uploader
+```
+
+2. Install required Python packages:
+```bash
+pip install pyserial esptool openai
+```
+
+3. Install Arduino CLI following the official instructions
+4. Configure Arduino CLI for ESP32:
+```bash
+arduino-cli core update-index
+arduino-cli core install esp32:esp32
+```
+
+5. Set up your OpenAI API key as an environment variable:
+```bash
+# Linux/macOS
+export OPENAI_API_KEY='your-api-key-here'
+
+# Windows (Command Prompt)
+set OPENAI_API_KEY=your-api-key-here
+
+# Windows (PowerShell)
+$env:OPENAI_API_KEY='your-api-key-here'
+```
+
+## Usage
+1. Connect your ESP32 board to your computer via USB
+
+2. Run the script:
+```bash
+python esp32_ai_uploader.py
+```
+3. When prompted, enter a description of what you want your ESP32 to do. For example:
+   Enter your prompt (or 'quit' to exit): Create a blinking LED program that blinks every 500ms
+   
+4. The tool will:
+   The tool will:
+
+Generate the appropriate Arduino sketch using AI
+
+Save it to the esp32_sketches directory
+
+Offer to upload it to your device
+
+
+## Project structure 
+esp32-ai-uploader/
+├── esp32_ai_uploader.py     # Main script
+├── esp32_sketches/          # Generated sketches directory
+│   └── sketch_*.ino         # Generated sketch files
+└── README.md                # This file
+
+
+
 
