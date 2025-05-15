@@ -89,11 +89,12 @@ Offer to upload it to your device
 
 
 ## Project structure 
-esp32-ai-uploader/
-├── esp32_ai_uploader.py     # Main script
-├── esp32_sketches/          # Generated sketches directory
-│   └── sketch_*.ino         # Generated sketch files
-└── README.md                # This file
+
+    esp32-ai-uploader/
+    ├── esp32_ai_uploader.py     # Main script
+    ├── esp32_sketches/          # Generated sketches directory
+    │   └── sketch_*.ino         # Generated sketch files
+    └── README.md                # This file
 
 
 
