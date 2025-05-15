@@ -1,0 +1,6 @@
+.env
+esp32_sketches/
+__pycache__/
+*.pyc
+.vscode/
+.idea/
