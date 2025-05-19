@@ -98,4 +98,100 @@ Offer to upload it to your device
 
 
 
+# 
+
+# DeepSeek AI-Uploader Tool
+This tool automatically generates ESP32 code from natural language prompts using DeepSeek's API and uploads it directly to your connected ESP32 board.
+
+## Features
+
+- Converts plain English prompts to working ESP32 code
+- Automatic compilation and upload to connected ESP32
+- Secure API key management (never stored in code)
+- Supports both Arduino IDE and ESP-IDF workflows
+
+## Prerequisites
+
+- Python 3.8+
+- ESP32 connected via USB
+- [Arduino CLI](https://arduino.github.io/arduino-cli/latest/installation/) installed
+- DeepSeek API key (get it from [DeepSeek's platform](https://platform.deepseek.com/))
+
+## Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/esp32-auto-coder.git
+   cd esp32-auto-coder
+   ```
+
+2. Install required Python packages:
+   ```bash
+   pip install python-dotenv requests
+   ```
+
+3. Install Arduino CLI and ESP32 support:
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+   arduino-cli core update-index
+   arduino-cli core install esp32:esp32
+   ```
+
+4. Create your environment file:
+   ```bash
+   echo "DEEPSEEK_API_KEY=your_api_key_here" > .env
+   ```
+   Replace `your_api_key_here` with your actual DeepSeek API key.
+
+## Usage
+
+1. Connect your ESP32 board via USB
+2. Run the script:
+   ```bash
+   python esp32_auto_upload.py
+   ```
+3. When prompted, enter what you want your ESP32 to do in plain English
+   Example prompts:
+   - "Make an LED blink every second"
+   - "Read temperature from DHT11 sensor and print to serial"
+   - "Create a WiFi access point called 'MyESP32'"
+
+4. The script will:
+   - Generate the appropriate code
+   - Display it for your review
+   - Compile and upload to your board automatically
+
+## Configuration
+
+You can customize these settings by editing the `.env` file:
+
+- `PORT`: Set your serial port (e.g., `COM3` on Windows or `/dev/ttyUSB0` on Linux)
+- `DEFAULT_MODEL`: Change the DeepSeek model if needed
+
+Example `.env`:
+```
+DEEPSEEK_API_KEY=sk_yourkeyhere
+PORT=COM3
+DEFAULT_MODEL=deepseek-coder
+```
+
+## Troubleshooting
+
+**Problem**: Upload fails with port errors
+- **Solution**: Check your port name in Device Manager (Windows) or `ls /dev/tty*` (Linux/Mac)
+
+**Problem**: API requests fail
+- **Solution**: Verify your API key and internet connection
+
+**Problem**: Compilation errors
+- **Solution**: The generated code might need adjustments. Copy the code and modify it manually if needed.
+
+## Security Note
+
+Never commit your `.env` file to version control. It's already included in `.gitignore` for your protection.
+
+## License
+
+MIT License - free for personal and commercial use
+
 
