@@ -14,7 +14,7 @@ def generate_code_from_prompt(prompt):
         raise ValueError("DeepSeek API key not found in environment variables")
     
     headers = {
-        "Authorization": f"Bearer {api_key}",
+        "Authorization": "Bearer {}".format(api_key),
         "Content-Type": "application/json"
     }
     
